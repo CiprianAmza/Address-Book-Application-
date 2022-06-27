@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+
+  body{
+    background-color: #03045e;
+  }
+    [class*="tableUnit"]{
+    padding: 1rem;
+    background-color: #023e8a;
+    border: 5px solid #ff9f1c;
+    margin-top: 10%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    color: #fff;
+    }
+
+    [class*="text"]{
+    color: #f6f4d2;
+    font-size: 40px;
+    text-align: center;
+    }
+    [class*="leftPart"]{
+    float: left;
+    }
+    [class*="rightPart"]{
+    float: right;
+    }
+    [class*="centerPart"]{
+    float: center;
+    }
+    table, th, td {
+  border: 1px solid black;
+}
+
+    [class*="text1"]{
+    margin-top: 8%;
+    font-size: 30px;
+    }
+
+    [class*="text2"]{
+    text-align: center;
+    }
+    [class*="btn"]{
+    font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<form th:action="@{/searchUserByName}" method="get" class="leftPart">
+    <input type="text" placeholder="Search some user..." th:name="name"/>
+    <input type="submit" value="Search" class="btn btn-light btn-lrg"/>
+</form>
+<form th:action="@{/hello}" method="get" class="leftPart">
+    <input type="submit" value="Administration Panel" class="btn btn-dark btn-lrg"/>
+</form>
+<form th:action="@{/createaccount}" method="get" class="rightPart">
+    <input type="submit" value="Register" class="btn btn-primary btn-lrg"/>
+</form>
+<form th:action="@{/login}" method="get" class="rightPart">
+    <input type="submit" value="Log in" class="btn btn-primary btn-lrg"/>
+</form>
+<form action="/users">
+    <input type="submit" value="Export the address book in CSV format [No user authentification needed]." class="btn btn-success btn-lrg"/>
+</form>
+
+<div class="element1">
+<h1 class="text1">Address Book</h1>
+<table class="tableUnit">
+    <tr>
+        <th class="text">First Name</th>
+        <th class="text">Last Name</th>
+        <th class="text">Address</th>
+        <th class="text">Photo</th>
+    </tr>
+
+    <tr th:each="user: ${listUsers}">
+        <td><p2 th:text="${user.firstName}" class="text2"></p2></td>
+        <td><p2 th:text="${user.lastName}" class="text2"></p2></td>
+        <td><p2 th:text="${user.address}" class="text2"></p2></td>
+        <td><img th:src="@{${user.photo}}" width="150" height="70"></td>
+    </tr>
+
+</table>
+
+</div>
+</body>
+</html>

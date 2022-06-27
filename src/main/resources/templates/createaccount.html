@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new account!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+
+  body{
+    background-color: #03045e;
+  }
+    [class*="element1"]{
+    padding: 1rem;
+    background-color: #023e8a;
+    border: 5px solid #ff9f1c;
+    margin-top: 10%;
+    margin-left: 32%;
+    margin-right: 32%;
+    color: #fff;
+    border-radius: 35%;
+    }
+    [class*="text1"]{
+    color: #e9ff70;
+    text-align:center;
+    font-size: 25px;
+    }
+    [class*="text2"]{
+    color: #e9ff70;
+    text-align:center;
+    font-size: 25px;
+    }
+    [class*="text3"]{
+    text-align:center;
+    font-size: 15px;
+    }
+    [class*="text4"]{
+    text-align:center;
+    font-size: 15px;
+    }
+    [class*="text5"]{
+    color: #40916c;
+    font-size: 22.5px;
+    font-weight: bold;
+    }
+    [class*="extraText"]{
+    color: #d84727;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    }
+    [class*="btn"]{
+    font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div class="element1">
+<div th:switch="${passwordStatus}" class="extraText">
+    <p th:case="'tooShort'">Username is too short. It must be minimum 6 characters length.</p>
+    <p th:case="'userNameInPassword'">Password can not contain the username.</p>
+    <p th:case="'passwordNotMatch'">The two passwords does not match.</p>
+    <p th:case="'passwordTooShort'">Password must be at least 9 characters length.</p>
+    <p th:case="'noDigits'">Password must contain at least one digit. [0-9]</p>
+    <p th:case="'noUpperChars'">Password must contain at least one upper case letter.</p>
+    <p th:case="'noLowerChars'">Password must contain at least one lower case letter.2</p>
+    <p th:case="'userNameExists'">Username already exists in the database.</p>
+    <p th:case="*"></p>
+</div>
+<form th:action="@{/createaccount}" method="post">
+  <div class="text1"><label> User Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="username" class="text5"/> </label></div>
+  <div class="text2"><label> Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="password"/> </label></div>
+  <div class="text2"><label> Confirm password:&nbsp;<input type="password" name="confirmedPassword"/></label></div>
+  <div class="text3"><input type="submit" value="Create Account" class="btn light"/></div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Login Page </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <style>
+
+  body{
+    background-color: #03045e;
+  }
+    [class*="element1"]{
+    border-radius: 40%;
+    padding: 1rem;
+    background-color: #023e8a;
+    border: 5px solid #ff9f1c;
+    margin-top: 10%;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: #fff;
+    }
+    [class*="text1"]{
+    color: #e9ff70;
+    text-align:center;
+    font-size: 25px;
+    }
+    [class*="text2"]{
+    color: #e9ff70;
+    text-align:center;
+    font-size: 25px;
+    }
+    [class*="text3"]{
+    text-align:center;
+    font-size: 15px;
+    }
+    [class*="text4"]{
+    text-align:center;
+    font-size: 15px;
+    }
+    [class*="text5"]{
+    color: #40916c;
+    font-size: 22.5px;
+    font-weight: bold;
+    }
+    [class*="extraText"]{
+    color: #d84727;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="element1">
+    <div th:if="${param.error}" class="extraText">
+      Invalid username and password.
+    </div>
+    <div th:if="${param.logout}" class="extraText">
+      You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+      <div class="text1"><label> User Name: <input type="text" name="username" class="text5"/></label></div>
+      <div class="text2"><label> Password: &nbsp;&nbsp;  <input type="password" name="password"/></label></div>
+      <div class="text3"><input type="submit" value="Sign In" class="btn btn-primary"/></div>
+    </form>
+    <form action="/createaccount">
+      <div class="text4"><input type="submit" value="New? Create an account!" class="btn btn-primary"/></div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
